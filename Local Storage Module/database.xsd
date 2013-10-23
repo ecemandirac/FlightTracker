@@ -1,0 +1,126 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="database" type="databaseType"/>
+<xsd:complexType name="databaseType">
+    <xsd:sequence>
+       <xsd:element ref="airplane"  minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="airport" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="carrier" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="city" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="customer" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="fares" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="rules" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="flight" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="flightInstance" minOccurs="0" maxOccurs="unbounded"/>
+       <xsd:element ref="reservation" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+</xsd:complexType>
+ 
+<xsd:element name="airplane" type="airplaneType"/>
+<xsd:complexType name="airplaneType">
+    <xsd:sequence>
+        <xsd:element name="airplaneCode" type="xsd:string"/>
+        <xsd:element name="type" type="xsd:string"/>
+        <xsd:element name="carrierCode" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="airport" type="airportType"/>
+<xsd:complexType name="airportType">
+    <xsd:sequence>
+        <xsd:element name="airportCode" type="xsd:string"/>
+        <xsd:element name="name" type="xsd:string"/>
+        <xsd:element name="cityCode" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="carrier" type="carrierType"/>
+<xsd:complexType name="carrierType">
+    <xsd:sequence>
+        <xsd:element name="carrierCode" type="xsd:string"/>
+        <xsd:element name="name" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="city" type="cityType"/>
+<xsd:complexType name="cityType">
+    <xsd:sequence>
+        <xsd:element name="cityCode" type="xsd:string"/>
+        <xsd:element name="name" type="xsd:string"/>
+        <xsd:element name="country" type="xsd:string"/>
+        <xsd:element name="zone" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="customer" type="customerType"/>
+<xsd:complexType name="customerType">
+    <xsd:sequence>
+        <xsd:element name="id" type="xsd:string"/>
+        <xsd:element name="name" type="xsd:string"/>
+        <xsd:element name="contactInfo" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="fares" type="faresType"/>
+<xsd:complexType name="faresType">
+    <xsd:sequence>
+        <xsd:element name="id" type="xsd:string"/>
+        <xsd:element name="carrierCode" type="xsd:string"/>
+        <xsd:element name="cost" type="xsd:string"/>
+        <xsd:element name="currency" type="xsd:string"/>
+        <xsd:element name="cityCodeOrig" type="xsd:string"/>
+        <xsd:element name="cityCodeDest" type="xsd:string"/>
+        <xsd:element name="fareClass" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="flight" type="flightType"/>
+<xsd:complexType name="flightType">
+    <xsd:sequence>
+        <xsd:element name="flightNo" type="xsd:string"/>
+        <xsd:element name="carrierCode" type="xsd:string"/>
+        <xsd:element name="origCode" type="xsd:string"/>
+        <xsd:element name="origTime" type="xsd:string"/>
+        <xsd:element name="destCode" type="xsd:string"/>
+        <xsd:element name="destTime" type="xsd:string"/>
+        <xsd:element name="days" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="flightList" type="flightListType"/>
+<xsd:complexType name="flightListType">
+ <xsd:sequence>
+   <xsd:element ref="flight"  minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+
+<xsd:element name="flightInstance" type="flightInstanceType"/>
+<xsd:complexType name="flightInstanceType">
+    <xsd:sequence>
+        <xsd:element name="id" type="xsd:string"/>
+        <xsd:element name="availableSeats" type="xsd:string"/>
+        <xsd:element name="date" type="xsd:string"/>
+        <xsd:element name="airplaneCode" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="reservation" type="reservationType"/>
+<xsd:complexType name="reservationType">
+    <xsd:sequence>
+        <xsd:element name="id" type="xsd:string"/>
+        <xsd:element name="customerID" type="xsd:string"/>
+        <xsd:element name="flightID" type="xsd:string"/>
+        <xsd:element name="seatNo" type="xsd:string"/>
+    </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="rules" type="rulesType"/>
+<xsd:complexType name="rulesType">
+    <xsd:sequence>
+        <xsd:element name="id" type="xsd:string"/>
+       
+    </xsd:sequence>
+</xsd:complexType>
+
+</xsd:schema> 

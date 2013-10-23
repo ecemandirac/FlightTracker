@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://localStorage/" xmlns:tns="http://localStorage/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="addNewCustomer" nillable="true" type="tns:addNewCustomer"/>
+
+  <xs:element name="addNewCustomerResponse" nillable="true" type="tns:addNewCustomerResponse"/>
+
+  <xs:element name="getAirportsByCity" nillable="true" type="tns:getAirportsByCity"/>
+
+  <xs:element name="getAirportsByCityResponse" nillable="true" type="tns:getAirportsByCityResponse"/>
+
+  <xs:element name="getCities" type="tns:getCities"/>
+
+  <xs:element name="getCitiesResponse" type="tns:getCitiesResponse"/>
+
+  <xs:element name="getFare" nillable="true" type="tns:getFare"/>
+
+  <xs:element name="getFareResponse" nillable="true" type="tns:getFareResponse"/>
+
+  <xs:element name="getFlightInstances" nillable="true" type="tns:getFlightInstances"/>
+
+  <xs:element name="getFlightInstancesResponse" nillable="true" type="tns:getFlightInstancesResponse"/>
+
+  <xs:element name="getFlights" nillable="true" type="tns:getFlights"/>
+
+  <xs:element name="getFlightsResponse" nillable="true" type="tns:getFlightsResponse"/>
+
+  <xs:element name="newBooking" nillable="true" type="tns:newBooking"/>
+
+  <xs:element name="newBookingResponse" nillable="true" type="tns:newBookingResponse"/>
+
+  <xs:element name="updateAvailSeats" nillable="true" type="tns:updateAvailSeats"/>
+
+  <xs:element name="updateAvailSeatsResponse" nillable="true" type="tns:updateAvailSeatsResponse"/>
+
+  <xs:complexType name="getFlights">
+    <xs:sequence>
+      <xs:element name="destCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="origCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="origTime" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFlightsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:flightListType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="flightListType">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="newBooking">
+    <xs:sequence>
+      <xs:element name="carrierCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="customerID" type="xs:string" minOccurs="0"/>
+      <xs:element name="flightNo" type="xs:string" minOccurs="0"/>
+      <xs:element name="seatNo" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="newBookingResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFare">
+    <xs:sequence>
+      <xs:element name="carrier" type="xs:string" minOccurs="0"/>
+      <xs:element name="destCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="fareClass" type="xs:string" minOccurs="0"/>
+      <xs:element name="origCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFareResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:faresType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="faresType">
+    <xs:sequence>
+      <xs:element name="carrierCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="cityCodeDest" type="xs:string" minOccurs="0"/>
+      <xs:element name="cityCodeOrig" type="xs:string" minOccurs="0"/>
+      <xs:element name="cost" type="xs:string" minOccurs="0"/>
+      <xs:element name="currency" type="xs:string" minOccurs="0"/>
+      <xs:element name="fareClass" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFlightInstances">
+    <xs:sequence>
+      <xs:element name="destCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="endDate" type="xs:string" minOccurs="0"/>
+      <xs:element name="origCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="origTime" type="xs:string" minOccurs="0"/>
+      <xs:element name="startDate" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFlightInstancesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:flightInstanceListType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="flightInstanceListType">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getCities">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getCitiesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:cityListType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cityListType">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAirportsByCity">
+    <xs:sequence>
+      <xs:element name="cityName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAirportsByCityResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:airportListType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="airportListType">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="updateAvailSeats">
+    <xs:sequence>
+      <xs:element name="availSeat" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateAvailSeatsResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="addNewCustomer">
+    <xs:sequence>
+      <xs:element name="contactInfo" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addNewCustomerResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

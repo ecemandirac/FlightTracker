@@ -1,0 +1,106 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+ <xsd:element name="bibliography" type="bibliographyType"/>
+
+  <xsd:complexType name="bibliographyType">
+  <xsd:sequence>
+   <xsd:element ref="journal"  minOccurs="0" maxOccurs="unbounded"/>
+   <xsd:element ref="researcherList" minOccurs="0" maxOccurs="unbounded"/>
+   <xsd:element ref="conference" minOccurs="0" maxOccurs="unbounded"/>
+   <xsd:element ref="researchGroup" minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ 
+ <xsd:element name="journal" type="journalType"/>
+
+ <xsd:complexType name="journalType">
+  <xsd:sequence>
+   <xsd:element ref="article"  minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+</xsd:complexType>  
+
+
+ <xsd:element name="article" type="articleType"/>
+
+ <xsd:complexType name="articleType">
+  <xsd:sequence>
+   <xsd:element name="title" type="xsd:string"/>
+   <xsd:element name="author" type="xsd:string"/>
+  </xsd:sequence>
+ 
+  <xsd:attribute name="edition" type="xsd:string"/>
+ </xsd:complexType>
+ 
+ <xsd:element name="researcherList" type="researcherListType"/>
+ 
+ <xsd:complexType name="researcherListType">
+ <xsd:sequence>
+   <xsd:element ref="researcher"  minOccurs="0" maxOccurs="unbounded"/>
+ </xsd:sequence>
+ </xsd:complexType>
+ 
+ <xsd:element name="researcher" type="researcherType"/>
+ 
+ <xsd:complexType name="researcherType">
+  <xsd:sequence>
+   <xsd:element name="name" type="xsd:string"/>
+   <xsd:element name="surname" type="xsd:string"/>
+   <xsd:element name="university" type="xsd:string"/>
+   <xsd:element name="department" type="xsd:string"/>
+   <xsd:element name="researchGroup" type="xsd:string"/>
+   <xsd:element name="username" type="xsd:string"/>
+   <xsd:element name="password" type="xsd:string"/>
+   <!-- <xsd:group ref="authentication"/> -->
+  </xsd:sequence>
+ 
+ </xsd:complexType>
+ 
+ <!--
+ <xsd:group name="authentication"/>
+  <xsd:sequence>
+   <xsd:element name="username" type="xsd:string"/>
+   <xsd:element name="password" type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:group>
+ -->
+ 
+ <xsd:element name="conference" type="conferenceType"/>
+ 
+ <xsd:complexType name="conferenceType">
+  <xsd:sequence>
+   <xsd:element ref="acceptedPapers"/>
+  </xsd:sequence>
+  <xsd:attribute name="title" type="xsd:string"/>
+   <xsd:attribute name="date" type="xsd:string"/>
+   <xsd:attribute name="place" type="xsd:string"/>
+</xsd:complexType>
+
+ <xsd:element name="acceptedPapers" type="apType"/>
+ 
+ <xsd:complexType name="apType">
+ <xsd:sequence>
+   <xsd:element ref="publication" minOccurs="0" maxOccurs="unbounded"/>  
+ </xsd:sequence>
+ </xsd:complexType>
+
+<xsd:element name="publication" type="publicationType"/>
+
+<xsd:complexType name="publicationType">
+<xsd:sequence>
+   <xsd:element name="title" type="xsd:string"/>
+   <xsd:element name="author" type="xsd:string"/>
+   <xsd:element name="date" type="xsd:string"/>  
+</xsd:sequence>
+ </xsd:complexType>
+ 
+<xsd:element name="researchGroup" type="rgType"/>
+<xsd:complexType name="rgType">
+ <xsd:sequence>
+   <xsd:element ref="researcher" minOccurs="0" maxOccurs="unbounded"/>  
+ </xsd:sequence>
+  <xsd:attribute name="title" type="xsd:string"/>
+ <xsd:attribute name="university" type="xsd:string"/>
+</xsd:complexType>
+
+</xsd:schema>
+ 
